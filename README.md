@@ -1,7 +1,7 @@
 # DDNS
 
 This add-on provides a script that updates all A records of a Cloudflare zone with your latest public ip address.  
-*Note: .ml, .tk, .cf, .ga and .gq domains aren't supported by Cloudflares API*
+***Note:** .ml, .tk, .cf, .ga and .gq domains aren't supported by Cloudflares API*
 
 ## Installation
 
