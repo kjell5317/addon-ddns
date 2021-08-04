@@ -1,18 +1,20 @@
 {
   "name": "DDNS",
-  "version": "0.0.3.4",
+  "version": "0.0.3.9",
   "slug": "ddns",
-  "description": "DDNS",
+  "description": "Updates the public IP address of the current network to all A records of the same zone on Cloudflare",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
   "boot": "auto",
   "options": {
     "api_key": null,
-    "zone": null
+    "zone": null,
+    "update": 300
   },
   "schema": {
     "api_key": "str",
-    "zone": "str"
+    "zone": "str",
+    "update": "int"
   },
   "map": ["config"]
 }
