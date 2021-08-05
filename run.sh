@@ -44,6 +44,8 @@ do
         && [ $ip1 != $ip2 ]
     then
 
+        bashio::log.info "New IP: $ip2"
+
         if answer=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$zone/dns_records?type=A&match=all" \
             -H "Authorization: Bearer $api_key" \
             -H "Content-Type: application/json") \
@@ -69,7 +71,6 @@ do
         done
 
         ip1="$ip2"
-        bashio::log.info "$ip1"
     fi
 
     sleep "$time"
