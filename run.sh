@@ -24,7 +24,7 @@ do
     if answer=$(curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$zone/dns_records/$(echo $i | base64 -d | jq -r '.id')" \
         -H "Authorization: Bearer $api_key" \
         -H "Content-Type: application/json" \
-        -d '{"content": "'$ip2'", "name": "'$(echo $i | base64 -d | jq -r '.name')'", "type": "A", "ttl": 1, "proxied": true}') \
+        -d '{"content": "'$ip1'", "name": "'$(echo $i | base64 -d | jq -r '.name')'", "type": "A", "ttl": 1, "proxied": true}') \
         && [ $(echo $answer | jq -r '.success') == 'true' ]
     then
         bashio::log.info "Updated $(echo $i | base64 -d | jq -r '.name')"
