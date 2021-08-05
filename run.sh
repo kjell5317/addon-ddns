@@ -19,14 +19,14 @@ while true; do
             domains=$(echo $answer | jq -r '.result')
     else bashio::log.error "Failed getting records $(echo $answer | jq -r 'errors')"; fi
 
-    for i in "${domains[@]}"; do
-        if answer=$(curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$zone/dns_records/$(echo $i | jq -r '.[0] | .id')" \
+    for i in $(echo $domains | jq -r '.[] | @base64'); do
+        if answer=$(curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/$zone/dns_records/$(echo $i | base64 -d | jq -r '.id')" \
             -H "Authorization: Bearer $api_key" \
             -H "Content-Type: application/json" \
-            -d '{"content": "'$ip'"}') \
+            -d '{"content": "'$ip'", "name": "'$(echo $i | base64 -d | jq -r '.name')'", "type": "A", "ttl": 1, "proxied": true}') \
             && [ $(echo $answer | jq -r '.success') == 'true' ]; then
-            bashio::log.info "Updated $(echo $i | jq -r '.[0] | .name')"
-        else bashio::log.error "Failed updating $(echo $i | jq -r '.[0] | .name') $(echo $answer | jq -r '.errors | .[0]')"; fi
+            bashio::log.info "Updated $(echo $i | base64 -d | jq -r '.name')"
+        else bashio::log.error "Failed updating $(echo $i | base64 -d | jq -r '.name') $(echo $answer | jq -r '.errors | .[0]')"; fi
     done
 
     sleep "$time"
