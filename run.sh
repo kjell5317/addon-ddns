@@ -69,9 +69,9 @@ do
         done
 
         ip1="$ip2"
+        bashio::log.info "$ip1"
     fi
 
-    bashio::log.info "$ip1"
     sleep "$time"
 
 done
