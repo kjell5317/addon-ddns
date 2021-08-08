@@ -8,6 +8,7 @@ api_key=$(bashio::config 'api_key')
 time=$(bashio::config 'update')
 
 ip1=$(dig +short myip.opendns.com @resolver1.opendns.com)
+bashio::log.info "Your IP: $ip1"
 
 if answer=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$zone/dns_records?type=A&match=all" \
     -H "Authorization: Bearer $api_key" \
@@ -33,7 +34,6 @@ do
     fi
 done
 
-bashio::log.info "$ip1"
 sleep "$time"
 
 
@@ -43,7 +43,6 @@ do
     if ip2=$(dig +short myip.opendns.com @resolver1.opendns.com) \
         && [ $ip1 != $ip2 ]
     then
-
         bashio::log.info "New IP: $ip2"
 
         if answer=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$zone/dns_records?type=A&match=all" \
@@ -69,7 +68,6 @@ do
                 bashio::log.error "Failed updating $(echo $i | base64 -d | jq -r '.name') $(echo $answer | jq -r '.errors | .[0]')"
             fi
         done
-
         ip1="$ip2"
     fi
 
