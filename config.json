@@ -3,18 +3,26 @@
   "version": "1.1.1.1",
   "slug": "ddns",
   "url": "https://github.com/kjell5317/addon-ddns",
-  "description": "Updates the public IP address of the current network to all A records of the same zone on Cloudflare",
+  "description": "Updates the public IP address to all A records on listed zones on Cloudflare",
   "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "startup": "services",
   "boot": "auto",
   "options": {
-    "api_key": null,
-    "zone": null,
+    "zones": [
+      {
+        "api_key": null,
+        "zone_id": null
+      }
+    ],
     "update": 300
   },
   "schema": {
-    "api_key": "str",
-    "zone": "str",
+    "zones": [
+      {
+        "api_key": "str",
+        "zone_id": "str"
+      }
+    ],
     "update": "int"
   },
   "map": ["config"]
