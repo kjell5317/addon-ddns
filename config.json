@@ -1,6 +1,6 @@
 {
   "name": "Cloudflare DDNS updater",
-  "version": "1.1.1.1",
+  "version": "1.1.1.2",
   "slug": "ddns",
   "url": "https://github.com/kjell5317/addon-ddns",
   "description": "Updates the public IP address to all A records on listed zones on Cloudflare",

@@ -42,7 +42,7 @@ do
         && [ $ip1 != $ip2 ]
     then
         bashio::log.info "New IP: $ip2"
-        for i in $(bashio::config "zones[$i].zone_id")
+        for i in $(bashio::config 'zones|keys')
         do
             api_key=$(bashio::config "zones[$i].api_key")
             if answer=$(curl -s -X GET "https://api.cloudflare.com/client/v4/zones/$(bashio::config "zones[$i].zone_id")/dns_records?type=A&match=all" \
