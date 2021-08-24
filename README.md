@@ -13,7 +13,7 @@ Now you can install this add-on like any other home-assistant add-on.
 
 1. Create an API token at [Cloudflare](https://dash.cloudflare.com/profile/api-tokens) and give it _Zone.DNS_ permissions.
 2. Copy your zone id from your [Cloudflare dashboard](https://dash.cloudflare.com/).
-3. Enter these details in the configuration page of this add-on and start it. Watch the log for errors.
+3. Enter these details in the configuration page of this add-on and start it. Watch the log for errors.  
    Your configuration should look similar to this:
 
 ```yaml
