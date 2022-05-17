@@ -2,6 +2,7 @@
 
 This add-on provides a script that updates all A records of a Cloudflare zone with your latest public ip address.
 _**Note:** .ml, .tk, .cf, .ga and .gq domains aren't supported by Cloudflare's API_
+[There is also an integration to automate this in Home Assistant now.](https://www.home-assistant.io/integrations/cloudflare/)
 
 ## Installation
 
