@@ -25,5 +25,6 @@
     ],
     "update": "int"
   },
-  "map": ["config"]
+  "map": ["config"],
+  "init": false
 }
