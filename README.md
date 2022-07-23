@@ -1,3 +1,5 @@
+There is [a new core integration of Home Assistant](https://github.com/brenner-tobias/addon-cloudflared) which does mostly the same. I recommend using the integration since it is more efficient than an addon. The only feature missing there is to update multiple domains or even zones since you can only have one instance of the integration.
+
 # DDNS
 
 This add-on provides a script that updates all A records of a Cloudflare zone with your latest public ip address.  
